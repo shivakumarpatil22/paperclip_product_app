@@ -1,0 +1,32 @@
+<h1>Products Index</h1>
+<div class="container">           
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Product Name</th>
+        <th>Product Price</th>
+        <th>Product Quantity</th>
+        <th>Product Available Quantity</th>
+        <th>Product Selling price</th>
+      </tr>
+    </thead>
+    <tbody>
+     <% @products.each do |product| %>
+      <tr>
+        <td><%= product.product_name %></td>
+        <td><%= product.product_price%></td>
+        <td><%= product.product_description%></td>
+        <td><%= product.product_quantity%></td>
+        <td><%= product.product_avail_quantity%></td>
+        <td><%= product.product_sell_price%></td>
+        <td><%= product.product_images%></td>
+		    <td><%= link_to 'show', product_path(product.id)%></td>
+        <td><%= link_to 'edit', edit_product_path(product.id)%></td>
+        <td><%= link_to 'destroy', product, method: :delete, data:{confirm: 'Are you Sure'}%></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+</div>
+<%= link_to 'New product', new_product_path %>
